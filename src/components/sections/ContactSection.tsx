@@ -1,0 +1,205 @@
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
+import {
+  Linkedin,
+  Github,
+  Mail,
+  Send,
+  MapPin
+} from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+
+// Contact form schema
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters" }),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const socialLinks = [
+  { 
+    icon: <Linkedin className="h-5 w-5" />,
+    href: "https://www.linkedin.com/in/sanjayvdevang/",
+    label: "LinkedIn"
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+      </svg>
+    ),
+    href: "https://medium.com/@sharyuchevale",
+    label: "Medium"
+  },
+  { 
+    icon: <Mail className="h-5 w-5" />,
+    href: "mailto:sanjayvdevang067@gmail.com",
+    label: "Email"
+  }
+];
+
+export default function ContactSection() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("M9mMNPoTpZwzgfLC9");
+  }, []);
+  
+  // Initialize form
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: ContactFormValues) {
+    try {
+      setIsSubmitting(true);
+      console.log('Sending email with values:', values);
+      
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'service_6n0fpnn',
+        'template_tpge3hu',
+        {
+          from_name: values.name,
+          from_email: values.email,
+          message: values.message,
+          to_name: 'Sharyu',
+          reply_to: values.email,
+        },
+        'M9mMNPoTpZwzgfLC9' // Adding public key here as well for extra security
+      );
+      
+      console.log('EmailJS Response:', result);
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      let errorMessage = "Please try again later or contact me directly via email.";
+      if (error instanceof Error) {
+        errorMessage = `Error: ${error.message}. Please try again or email directly.`;
+      }
+      toast({
+        title: "Oops! Something went wrong",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <section 
+      id="contact" 
+      className="py-20 relative overflow-hidden" 
+      style={{ background: 'linear-gradient(180deg, #143442, #1c3c30)' }}
+    >
+      {/* Subtle animated gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          animate={{
+            opacity: [0.05, 0.1, 0.05],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at 50% 50%, rgba(126,160,70,0.15) 0%, transparent 70%)',
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-lg font-medium mb-2" style={{ color: '#7EA046' }}>Get in touch</h3>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let's Connect</h2>
+          <div className="flex items-center justify-center gap-2 text-gray-400">
+            <MapPin className="w-4 h-4" />
+            <span className="text-sm">George Washington University, DC</span>
+          </div>
+        </motion.div>
+
+        <div className="max-w-2xl mx-auto">
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-3xl mx-auto w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-4">
+                    <Input
+                      placeholder="Your name"
+                      className="w-full bg-black/30 text-white placeholder:text-gray-300 rounded-lg px-4 py-3"
+                      {...form.register("name")}
+                    />
+                    <Textarea
+                      placeholder="Your message"
+                      className="w-full bg-black/30 text-white placeholder:text-gray-300 rounded-lg px-4 py-3 min-h-[120px]"
+                      {...form.register("message")}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <Input
+                      placeholder="Your email"
+                      className="w-full bg-black/30 text-white placeholder:text-gray-300 rounded-lg px-4 py-3"
+                      {...form.register("email")}
+                    />
+                  </div>
+                </div>
+                <div className="mt-8 flex justify-center">
+                  <Button
+                    type="submit"
+                    className="bg-[#7EA046] hover:bg-[#6a8c3a] text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2"
+                    disabled={isSubmitting}
+                  >
+                    <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                    <Send className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
