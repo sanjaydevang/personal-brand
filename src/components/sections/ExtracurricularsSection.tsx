@@ -62,11 +62,11 @@ const activities = [
 ];
 
 const achievements = [
-  "Led 500+ students",
-  "Hosted 10+ creative events",
-  "Managed 50+ events",
-  "Managed teams of 10+ members",
-  "Mentored 10+ students"
+  "Managed 50+ college and club events collaboratively",
+  "Served as Teaching Assistant for lab sessions with 200+ students",
+  "Mentored 10+ interns and fresh graduates",
+  "Coordinated teams of 10+ members for academic and extracurricular initiatives",
+  "Supported student success through technical guidance and mentorship"
 ];
 
 export default function ExtracurricularsSection() {

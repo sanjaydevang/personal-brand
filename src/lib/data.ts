@@ -113,12 +113,13 @@ export const software = [
       "Git", "GitHub", "GitLab", "Bitbucket"
     ]
   },
-  {
+  /* {
     category: "Collaboration & Project Tools",
     tools: [
       "Jira", "Confluence", "Notion", "Slack", "Trello"
     ]
   }
+  */
   
 ];
 
