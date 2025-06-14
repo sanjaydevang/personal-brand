@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Dumbbell, Palette, PenTool, Compass } from "lucide-react";
-import exerciseImage from "@/assets/linkpic1.jpg";
-import decorImage from "@/assets/linkpic1.jpg";
-import trekkingImage from "@/assets/linkpic1.jpg";
-import writingImage from "@/assets/linkpic1.jpg";
+import { Dumbbell, Palette, PenTool, Compass, Utensils, Camera } from "lucide-react";
+import exerciseImage from "@/assets/move1111.png";
+import cookingImage from "@/assets/cool111.jpg";
+import trekkingImage from "@/assets/mount.jpg";
+import photographyImage from "@/assets/photo1.png";
 
 // Particle animation variants
 const particleVariants = {
@@ -39,20 +39,20 @@ const interests: Interest[] = [
     overlayText: "MOVE",
     details: [
       "Running",
-      "Yoga",
-      "Badminton"
+      "Badminton",
+      "Pickleball"
     ]
   },
   {
-    title: "Art & Design",
-    description: "Exploring creativity through various mediums and styles",
-    icon: <Palette className="w-6 h-6" />,
-    image: decorImage,
-    overlayText: "CREATE",
+    title: "Cooking",
+    description: "Exploring flavors and cultures through diverse cuisines",
+    icon: <Utensils className="w-6 h-6" />, // Replace with the correct icon component you're using, like `Utensils` from lucide-react
+    image: cookingImage, // Replace with your actual image import or asset
+    overlayText: "TASTE",
     details: [
-      "UI/UX Design",
-      "Home Decor",
-      "Digital Designing"
+    "Indian Cuisine",
+    "Chinese Cuisine",
+    "Mediterranean Cuisine"
     ]
   },
   {
@@ -68,15 +68,15 @@ const interests: Interest[] = [
     ]
   },
   {
-    title: "Writing",
-    description: "Crafting narratives and sharing thoughts through words",
-    icon: <PenTool className="w-6 h-6" />,
-    image: writingImage,
-    overlayText: "CREATE",
-    details: [
-      "Technical Writing",
-      "Storytelling",
-      "Business blogs"
+    title: "Photography",
+  description: "Capturing moments and telling stories through the lens",
+  icon: <Camera className="w-6 h-6" />,
+  image: photographyImage,
+  overlayText: "CAPTURE",
+  details: [
+  "Portrait Photography",
+  "Street & Travel Shots",
+  "Editing & Composition"
     ]
   }
 ];

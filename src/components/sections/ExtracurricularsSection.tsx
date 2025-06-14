@@ -1,57 +1,64 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import aarohiImage from "@/assets/AWS Cert.jpg";
-import culturalImage from "@/assets/AWS Cert.jpg";
-import lrImage from "@/assets/AWS Cert.jpg";
-import receptionImage from "@/assets/AWS Cert.jpg";
-import buddyImage from "@/assets/AWS Cert.jpg";
+import awsCertImage from "@/assets/awss.png";
+
+import cloudEngineerCertImage from "@/assets/awss.png";
+import redHatCertImage from "@/assets/awss.png";
+import redHatAnsibleCertImage from "@/assets/awss.png";
+import iiitbCertImage from "@/assets/awss.png";
 
 const activities = [
   {
-    image: aarohiImage,
-    role: "Event Coordinator",
-    year: "2017-18",
-    organization: "Aarohi",
-    description: "Managed Judges for the all events for the festival",
-    department: "VNIT",
-    size: "medium"
+    image: awsCertImage,
+  role: "AWS Certified Solutions Architect – Associate",
+  year: "2024–2027",
+  organization: "Amazon Web Services (AWS)",
+  description: "Validated expertise in designing scalable, secure, and cost-optimized AWS solutions. Credential issued via Credly.",
+  department: "Certification",
+  size: "medium",
+  link: "https://www.credly.com/badges/b1292f15-7f0c-4304-80e7-83bf33cc4267" // Repla
   },
   {
-    image: culturalImage,
-    role: "Cultural Secretary",
-    year: "2018-19",
-    organization: "EEE Department",
-    description: "Led the managment and logistics of cultural events of the EEE department",
-    department: "VNIT",
-    size: "large"
+    image: cloudEngineerCertImage, // import your Credly badge or relevant logo
+   role: "Google Cloud Digital Leader – Cloud Engineering",
+    year: "2024",
+    organization: "Google Cloud / Credly",
+    description: "Credentialed in foundational cloud engineering skills including compute, networking, storage, security, and DevOps principles using Google Cloud technologies.",
+    department: "Certification",
+    size: "medium",
+    link: "https://www.credly.com/badges/ef899d1c-7e3f-497d-b211-199898b1dfc8"
   },
   {
-    image: lrImage,
-    role: "Department Representative",
-    year: "2019-20",
-    organization: "EEE Department",
-    description: "Led department level event for 400 students",
-    department: "VNIT",
-    size: "small"
+    image: redHatCertImage, // Replace with local import or asset path
+  role: "Red Hat System Administration I (RH124)",
+  year: "2025",
+  organization: "Red Hat Academy",
+  description: "Completed RH124 under Red Hat Academy, covering essential Linux administration, system tasks, user/group management, and basic networking. Foundation for RHCSA certification.",
+  department: "Certification",
+  size: "medium",
+  link: "https://www.credly.com/badges/4e8ad2fc-430c-41c9-806c-c16c1d5201bf"
   },
   {
-    image: receptionImage,
-    role: "Reception Head",
-    year: "2019-20",
-    organization: "AXIS",
-    description: "Headed the reception team for techinal festival that hosted 30+ events",
-    department: "VNIT",
-    size: "medium"
+    image: redHatAnsibleCertImage, // replace with your imported badge or image path
+  role: "Red Hat Linux Automation with Ansible (RH294)",
+  year: "2025",
+  organization: "Red Hat Academy",
+  description: "Completed RH294 under Red Hat Academy, focusing on Linux infrastructure automation using Ansible. Built automation scripts, playbooks, and roles to streamline system management. Prepares for Red Hat Certified Engineer (RHCE).",
+  department: "Certification",
+  size: "medium",
+  link: "https://www.credly.com/badges/3ad27d58-4be5-4495-8751-fff7a7abbc09"
   },
   {
-    image: buddyImage,
-    role: "Buddy",
-    year: "2024-25",
-    organization: "Buddy Connect",
-    description: "Mentored incoming batch of MS-MIS in career, academic and personal aspects",
-    department: "TAMU",
-    size: "large"
-  }
+    image: iiitbCertImage, // Replace with actual image path or import
+    role: "Post Graduate Diploma in Data Science",
+    year: "2019–2020",
+    organization: "IIIT Bangalore",
+    description: "Completed a year-long postgraduate diploma in Data Science from IIIT Bangalore, covering machine learning, data analytics, statistical methods, Python programming, and real-world case studies.",
+    department: "Academic Certification",
+    size: "medium",
+    link: "https://drive.google.com/file/d/1d3cikIVgSyPAqAaFJ54PXxRO72mlc9hq/view?usp=drive_link"
+}
+  
 ];
 
 const achievements = [
@@ -211,7 +218,18 @@ export default function ExtracurricularsSection() {
                           {activity.department}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-white">{activity.role}</h3>
+                      {activity.link ? (
+                        <a
+                          href={activity.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xl font-bold text-[#7EA046] underline hover:text-[#5a7a2e] transition-colors"
+                        >
+                          {activity.role}
+                        </a>
+                      ) : (
+                        <span className="text-xl font-bold text-white">{activity.role}</span>
+                      )}
                       <p className="text-sm text-white/80">{activity.organization}</p>
                       <p className="text-sm text-white/60 line-clamp-2">{activity.description}</p>
                     </div>
@@ -382,13 +400,18 @@ export default function ExtracurricularsSection() {
                       <span className="text-[#7EA046] text-xs font-medium">{activity.year}</span>
                     </motion.div>
 
-                    <motion.h3 
-                      className="text-lg font-bold text-white mb-2 tracking-tight line-clamp-2"
-                      animate={{ y: isHovered ? -5 : 0 }}
-                      transition={{ duration: 0.2, delay: 0.1 }}
-                    >
-                      {activity.role}
-                    </motion.h3>
+                    {activity.link ? (
+                      <a
+                        href={activity.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-bold text-[#7EA046] underline hover:text-[#5a7a2e] transition-colors mb-2 tracking-tight line-clamp-2 block"
+                      >
+                        {activity.role}
+                      </a>
+                    ) : (
+                      <span className="text-lg font-bold text-white mb-2 tracking-tight line-clamp-2 block">{activity.role}</span>
+                    )}
                   </div>
 
                   {/* Bottom Content */}

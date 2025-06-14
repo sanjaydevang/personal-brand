@@ -2,7 +2,27 @@ import { skills, software } from "@/lib/data";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { Code2, Database, Palette, Laptop, Brush, ClipboardList, LineChart, FileText, ChevronDown } from "lucide-react";
+import {
+  Cloud,
+  ServerCog,
+  Database,
+  Brain,
+  Zap,
+  Spline,
+  Users,
+  Code2,
+  LineChart,
+  ClipboardList,
+  Palette,
+  Laptop,
+  Brush,
+  ChevronDown,
+  Settings2,
+  ShieldCheck,
+  Layers3,
+  UserCog,
+  FileText
+} from "lucide-react";
 import { ReactNode } from "react";
 
 type SkillIconsType = {
@@ -10,13 +30,18 @@ type SkillIconsType = {
 };
 
 const skillIcons: SkillIconsType = {
-  "Product Management": <ClipboardList className="w-6 h-6" />,
-  "UI Design & Development": <Palette className="w-6 h-6" />,
-  "Backend Development": <Database className="w-6 h-6" />,
+  
+  "Backend Development": <ServerCog className="w-6 h-6" />,
   "Data Management": <LineChart className="w-6 h-6" />,
-  "Planning & Documentation": <FileText className="w-6 h-6" />,
   "Design": <Brush className="w-6 h-6" />,
-  "Development": <Laptop className="w-6 h-6" />
+  "Development": <Laptop className="w-6 h-6" />,
+  "Cloud & DevOps": <Cloud className="w-6 h-6" />,
+  "Site Reliability Engineering": <ShieldCheck className="w-6 h-6" />,
+  "Data Engineering & Analytics": <LineChart className="w-6 h-6" />,
+  "Machine Learning & AI": <Brain className="w-6 h-6" />,
+  "Automation & Scripting": <Zap className="w-6 h-6" />,
+  "System Design & Architecture": <Layers3 className="w-6 h-6" />,
+  "Technical Leadership": <UserCog className="w-6 h-6" />
 };
 
 export default function SkillsSection() {
@@ -91,18 +116,6 @@ export default function SkillsSection() {
                             <h3 className="text-base font-semibold text-white mb-1 line-clamp-1">
                               {skill.name}
                             </h3>
-                            {/* Simplified Progress Bar */}
-                            <div className="flex items-center gap-2">
-                              <div className="h-1 flex-1 bg-black/20 rounded-full overflow-hidden">
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  animate={{ width: visibleProgress ? `${skill.percentage}%` : 0 }}
-                                  transition={{ duration: 1, delay: index * 0.2 }}
-                                  className="h-full bg-gradient-to-r from-[#7EA046] to-[#94B06F] rounded-full"
-                                />
-                              </div>
-                              <span className="text-xs text-[#7EA046] flex-shrink-0">{skill.percentage}%</span>
-                            </div>
                           </div>
                         </div>
                         <motion.div
@@ -119,34 +132,29 @@ export default function SkillsSection() {
                     </div>
 
                     {/* Expandable Content - Technologies */}
-                    <motion.div
-                      initial={false}
-                      animate={{ 
-                        height: expandedSkill === skill.name ? 'auto' : 0,
-                        opacity: expandedSkill === skill.name ? 1 : 0
-                      }}
-                      transition={{
-                        height: { duration: 0.3 },
-                        opacity: { duration: 0.2 }
-                      }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-4 pb-4">
-                        <div className="pt-2 border-t border-[#7EA046]/20">
-                          <div className="flex flex-wrap gap-2">
-                            {getTechnologies(skill.name).map((tech, i) => (
-                              <span
-                                key={i}
-                                className="px-2.5 py-1 rounded-full bg-gradient-to-br from-[#7EA046]/20 to-[#7EA046]/5 
-                                         text-gray-300 text-xs border border-[#7EA046]/20"
-                              >
-                                {tech}
-                              </span>
-                            ))}
+                    {expandedSkill === skill.name && (
+                      <motion.div
+                        initial={false}
+                        animate={{ height: expandedSkill === skill.name ? 'auto' : 0, opacity: expandedSkill === skill.name ? 1 : 0 }}
+                        transition={{ height: { duration: 0.3 }, opacity: { duration: 0.2 } }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-4 pb-4">
+                          <div className="pt-2 border-t border-[#7EA046]/20">
+                            <div className="flex flex-wrap gap-2">
+                              {(getTechnologies(skill.name).length > 0 ? getTechnologies(skill.name) : ["ExampleTech1", "ExampleTech2", "ExampleTech3"]).map((tech, i) => (
+                                <span
+                                  key={i}
+                                  className="px-2.5 py-1 rounded-full bg-gradient-to-br from-[#7EA046]/20 to-[#7EA046]/5 text-gray-300 text-xs border border-[#7EA046]/20"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </motion.div>
+                      </motion.div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -177,11 +185,11 @@ export default function SkillsSection() {
                   <div className="space-y-2">
                     {category.tools.map((tool, toolIndex) => (
                       <div
-                        key={tool.name}
+                        key={tool}
                         className="flex items-center gap-2 text-gray-300 text-xs"
                       >
                         <div className="w-1 h-1 rounded-full bg-[#7EA046]/50" />
-                        <span className="line-clamp-1">{tool.name}</span>
+                        <span className="line-clamp-1">{tool}</span>
                       </div>
                     ))}
                   </div>
@@ -234,54 +242,7 @@ export default function SkillsSection() {
                           <ChevronDown className="w-5 h-5 text-[#7EA046]" />
                         </motion.div>
                       </div>
-
-                      {/* Progress Bar */}
-                      <div className="mt-4">
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm text-gray-400">Proficiency</span>
-                          <span className="text-sm text-[#7EA046]">{skill.percentage}%</span>
-                        </div>
-                        <div className="h-1.5 bg-black/20 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: visibleProgress ? `${skill.percentage}%` : 0 }}
-                            transition={{ duration: 1, delay: index * 0.2 }}
-                            className="h-full bg-gradient-to-r from-[#7EA046] to-[#94B06F] rounded-full relative"
-                          >
-                            <motion.div
-                              animate={{ x: ['0%', '100%'] }}
-                              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                            />
-                          </motion.div>
-                        </div>
-                      </div>
                     </div>
-
-                    {/* Expandable Content */}
-                    <motion.div
-                      initial={false}
-                      animate={{ height: expandedSkill === skill.name ? 'auto' : 0 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-4 pt-0">
-                        <div className="border-t border-[#7EA046]/20 pt-4">
-                          <div className="flex flex-wrap gap-2">
-                            {getTechnologies(skill.name).map((tech, i) => (
-                              <span
-                                key={i}
-                                className="px-3 py-1.5 rounded-full bg-gradient-to-br from-[#7EA046]/20 to-[#7EA046]/5 
-                                         text-gray-300 text-sm border border-[#7EA046]/20
-                                         hover:from-[#7EA046]/30 hover:to-[#7EA046]/10 hover:text-white 
-                                         transition-all duration-300"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
                   </div>
                 </motion.div>
               ))}
@@ -311,11 +272,11 @@ export default function SkillsSection() {
                   <div className="space-y-3">
                     {category.tools.map((tool, toolIndex) => (
                       <div
-                        key={tool.name}
-                        className="flex items-center gap-2.5 text-gray-300 hover:text-white transition-colors duration-200 group/tool"
+                        key={tool}
+                        className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200 group/tool"
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-[#7EA046]/50 group-hover/tool:bg-[#7EA046] group-hover/tool:scale-125 transition-all duration-300" />
-                        <span className="text-sm">{tool.name}</span>
+                        <span className="text-sm">{tool}</span>
                       </div>
                     ))}
                   </div>
@@ -374,54 +335,7 @@ export default function SkillsSection() {
                         </motion.div>
                       </div>
                     </div>
-
-                    {/* Progress Bar */}
-                    <div className="mt-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-gray-400">Proficiency</span>
-                        <span className="text-sm text-[#7EA046]">{skill.percentage}%</span>
-                      </div>
-                      <div className="h-1.5 bg-black/20 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: visibleProgress ? `${skill.percentage}%` : 0 }}
-                          transition={{ duration: 1, delay: index * 0.2 }}
-                          className="h-full bg-gradient-to-r from-[#7EA046] to-[#94B06F] rounded-full relative"
-                        >
-                          <motion.div
-                            animate={{ x: ['0%', '100%'] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                          />
-                        </motion.div>
-                      </div>
-                    </div>
                   </div>
-
-                  {/* Expandable Content */}
-                  <motion.div
-                    initial={false}
-                    animate={{ height: expandedSkill === skill.name ? 'auto' : 0 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="p-4 pt-0">
-                      <div className="border-t border-[#7EA046]/20 pt-4">
-                        <div className="flex flex-wrap gap-2">
-                          {getTechnologies(skill.name).map((tech, i) => (
-                            <span
-                              key={i}
-                              className="px-3 py-1.5 rounded-full bg-gradient-to-br from-[#7EA046]/20 to-[#7EA046]/5 
-                                       text-gray-300 text-sm border border-[#7EA046]/20
-                                       hover:from-[#7EA046]/30 hover:to-[#7EA046]/10 hover:text-white 
-                                       transition-all duration-300"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -450,11 +364,11 @@ export default function SkillsSection() {
                 <div className="space-y-3">
                     {category.tools.map((tool, toolIndex) => (
                     <div
-                      key={tool.name}
+                      key={tool}
                       className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200 group/tool"
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-[#7EA046]/50 group-hover/tool:bg-[#7EA046] group-hover/tool:scale-125 transition-all duration-300" />
-                      <span className="text-sm">{tool.name}</span>
+                      <span className="text-sm">{tool}</span>
                     </div>
                   ))}
                 </div>
@@ -470,44 +384,37 @@ export default function SkillsSection() {
 
 function getTechnologies(skillName: string): string[] {
   switch (skillName) {
-    case "Product Management":
+    case "Cloud & DevOps":
       return [
-        "Product Strategy & Vision",
-        "Requirement Gathering",
-        "User Research",
-        "Market & Competitive Analysis",
-        "Roadmapping",
-        "Backlog Prioritization",
-        "Stakeholder Management",
-        "Go-to-Market Strategy"
+        "AWS", "Azure", "Google Cloud", "Terraform", "Docker", "Kubernetes", "CI/CD"
       ];
-    case "UI Design & Development":
+    case "Site Reliability Engineering":
       return [
-        "Wire-framing & Prototyping",
-        "HTML/CSS",
-        "Javascript",
-        "Angular",
-        "React"
+        "Monitoring", "Incident Response", "SLI/SLO/SLA", "Prometheus", "Grafana"
       ];
     case "Backend Development":
       return [
-        "Java",
-        "Python",
-        "Node.js",
-        "RESTful",
-        "Spring",
-        "Spring Boot",
-        "Git",
-        "Postman"
+        "Node.js", "Python", "Java", "SQL", "REST APIs", "Express"
       ];
-    case "Data Management":
+    case "Data Engineering & Analytics":
       return [
-        "SQL",
-        "NoSQL",
-        "Data Analysis",
-        "Data Visualization",
-        "ETL",
-        "Big Data"
+        "Apache Spark", "SQL", "ETL", "Data Visualization", "Pandas"
+      ];
+    case "Machine Learning & AI":
+      return [
+        "Scikit-learn", "Jupyter", "XGBoost", "Regression", "Classification"
+      ];
+    case "Automation & Scripting":
+      return [
+        "Python", "Bash", "GitHub Actions", "Jenkins"
+      ];
+    case "System Design & Architecture":
+      return [
+        "Microservices", "API Design", "Scalability", "Load Balancing"
+      ];
+    case "Technical Leadership":
+      return [
+        "Mentoring", "Code Reviews", "Agile", "Stakeholder Management"
       ];
     default:
       return [];

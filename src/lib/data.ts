@@ -1,27 +1,28 @@
-import breezePrototype from "@/assets/linkpic1.jpg";
-import productCanvas from "@/assets/linkpic1.jpg";
-import portfolioPreview from "@/assets/linkpic1.jpg";
-import simplibills from "@/assets/linkpic1.jpg";
-import oneswipe from "@/assets/linkpic1.jpg";
+import biteExpressImage from "@/assets/web1.jpg";
+import spotifyStrategyImage from "@/assets/spotify.png";
+import portfolioPreview from "@/assets/portfolio.png";
+import gwustore from "@/assets/gwuc.jpg";
+import wildfirePredictionImage from "@/assets/cali.png";
 import securebank from "@/assets/linkpic1.jpg";
 
 export const projects = [
   {
-    title: "Breeze: Mental Wellness Platform",
-    type: "Prototype",
-    description: "Intuitive, customizable platform with a simple UI/UX, making mental wellness accessible and tailored to individual needs.",
-    technologies: ["Figma", "Google Forms", "Microsoft 365", "Perplexity"],
-    image: breezePrototype,
-    demoLink: "https://drive.google.com/file/d/114mxZ1u2y-7T651AEyErZt4cwUSY618y/view?usp=sharing",
-    githubLink: "#"
+        title: "Bite Express: Food Delivery Platform",
+        type: "Web App",
+        description: "Designed and built a lightweight food delivery platform to empower small hotels and restaurants to manage orders without third-party apps. Features real-time tracking, modular pages, and a clean UI focused on accessibility and efficiency.",
+        technologies: ["HTML", "CSS", "JavaScript", "Google Maps API"],
+        image: biteExpressImage, // replace with actual image variable or path
+        demoLink: "https://docs.google.com/presentation/d/1rejkHDtHQVnYIsNIOvTZNQbDQZz5dQv-/edit?usp=drive_link",
+        githubLink: "https://github.com/sanjaydevang/Bite-Express"
+      
   },
   {
-    title: "DeliverEase: Product Canvas",
-    type: "Product Breakdown",
-    description: "Canvas with detailed analysis of a food delivery services comparison app; created a comprehensive product design including product roadmaps, features, product performance metrics, user personas, mock-ups, and user stories.",
-    technologies: ["Figma", "Canvas", "Lucidchart"],
-    image: productCanvas,
-    demoLink: "https://drive.google.com/file/d/1Hf1mHzqS0R8hs5fXVHah-ijDcZHtqZLv/view?usp=sharing",
+    title: "Spotify Strategic Redesign",
+    type: "Data-Driven UX & Growth Strategy",
+    description: "Analyzed Spotify's user behavior, revenue streams, and churn data to develop actionable strategies for improving user engagement, premium conversion, and ad monetization. Proposed personalized features, regional growth tactics, and web app UX improvements to increase profitability and market share.",
+    technologies: ["Excel", "Python", "Google Trends", "Statista", "Spotify Financials", "SEMrush"],
+    image: spotifyStrategyImage, // replace with actual image variable or path
+    demoLink: "https://docs.google.com/presentation/d/18nMRtfehXWYZ3xLBV0lUJOcMQplnWqiu/edit?usp=drive_link",
     githubLink: "#"
   },
   {
@@ -30,27 +31,28 @@ export const projects = [
     description: "A responsive and interactive website, to showcase my work, journey and interests. Features modern UI/UX design, smooth animations, and dynamic content management.",
     technologies: ["React", "HTML/CSS", "Replit", "Cursor", "Vercel", "Git", "Github"],
     image: portfolioPreview,
-    demoLink: "https://github.com/sharyuchevale/PersonalPortfolio",
+    demoLink: "https://github.com/sanjaydevang/PersonalPortfolio",
     githubLink: "#"
   },
   {
-    title: "Simplibills: Easy Claims",
-    type: "Product Breakdown",
-    description: "Product to help patients navigate the complex journey of hospital bill payments and claims",
-    technologies: ["Figma", "Google Forms", "Microsoft 365", "Perplexity"],
-    image: simplibills,
-    demoLink: "https://drive.google.com/drive/folders/151XZSAs7RJ08nXQK30Lf1ag05GbnbRja?usp=sharing",
+    title: "Loyalty & Referral System for GW Store",
+    type: "Relational Database Design & Customer Engagement Strategy",
+    description: "Designed a data-driven loyalty and referral program for the GW Campus Store to boost student engagement, increase customer retention, and reduce acquisition costs. Built ER models, 3NF schema, DDL/DML scripts, and proposed SQL queries and triggers to support personalized promotions and tier-based rewards.",
+    technologies: ["MySQL", "SQL", "ER Modeling", "3NF", "Triggers"],
+    image: gwustore, // replace with actual image variable or path
+    demoLink: "https://docs.google.com/presentation/d/1oNAHIzM-UOmGxSy-S9SiH6UmhnX8wHEw/edit?usp=drive_link",
     githubLink: "#"
   },
   {
-    title: "One Swipe: All-in-One Card",
-    type: "Business",
-    description: "Managing multiple cards for different purposes in one card: Corporate credit card, access card, employee ID card",
-    technologies: ["Figma", "Canva", "Leanstack"],
-    image: oneswipe,
-    demoLink: "https://drive.google.com/drive/folders/1cVH8quLwyRzdJ_996CASOgRHCKo0A-Xm?usp=sharing",
-    githubLink: "#"
+    title: "California Wildfire Prediction System",
+    type: "IoT + ML Forecasting Project",
+    description: "Built a wildfire risk prediction system using weather data, IoT sensor simulation, and machine learning. Used logistic regression and XGBoost to forecast fire start probability and daily fire count. Analyzed historical fire-weather correlations and implemented predictive models to support early warning systems and resource allocation.",
+    technologies: ["Python", "Apache Spark", "SQL", "XGBoost", "Logistic Regression", "IoT Simulation"],
+    image: wildfirePredictionImage, // replace with actual image variable or path
+    demoLink: "https://github.com/sanjaydevang/wildfire-prediction-project",
+    githubLink: "https://github.com/sanjaydevang/wildfire-prediction-project"
   },
+  /*
   {
     title: "Secure Bank",
     type: "Case Study",
@@ -60,78 +62,64 @@ export const projects = [
     demoLink: "https://drive.google.com/file/d/1gEwPHyqMbwobDBqQ5UsvOVpDhMyJsje3/view?usp=sharing",
     githubLink: "#"
   }
+    */
 ];
 
 export const skills = [
-  {
-    name: "Product Management",
-    percentage: 80,
-    color: "bg-[#7EA046]"
-  },
-  {
-    name: "UI Design & Development",
-    percentage: 90,
-    color: "bg-[#7EA046]"
-  },
-  {
-    name: "Backend Development",
-    percentage: 70,
-    color: "bg-[#7EA046]"
-  },
-  {
-    name: "Data Management",
-    percentage: 70,
-    color: "bg-[#7EA046]"
-  }
+  { name: "Cloud & DevOps", color: "bg-[#3081D0]" },
+  { name: "Site Reliability Engineering", color: "bg-[#3081D0]" },
+  { name: "Backend Development", color: "bg-[#3081D0]" },
+  { name: "Data Engineering & Analytics", color: "bg-[#3081D0]" },
+  { name: "Machine Learning & AI", color: "bg-[#3081D0]" },
+  { name: "Automation & Scripting", color: "bg-[#3081D0]" },
+  { name: "System Design & Architecture", color: "bg-[#3081D0]" },
+  { name: "Technical Leadership", color: "bg-[#3081D0]" }
 ];
 
 export const software = [
   {
-    category: "Planning & Documentation",
+    category: "Cloud Platforms",
     tools: [
-      { name: "Jira", proficiency: 90 },
-      { name: "Confluence", proficiency: 85 },
-      { name: "Trello", proficiency: 90 },
-      { name: "Notion", proficiency: 85 },
-      { name: "Miro", proficiency: 80 },
-      { name: "Slack", proficiency: 90 }
+      "AWS", "Azure", "Google Cloud Platform", "Heroku"
     ]
   },
   {
-    category: "Design",
+    category: "DevOps & Automation",
     tools: [
-      { name: "Figma", proficiency: 85 },
-      { name: "Framer", proficiency: 80 },
-      { name: "Lucidchart", proficiency: 85 }
+      "Docker", "Kubernetes", "Terraform", "Ansible", "GitHub Actions", "Jenkins", "CI/CD"
     ]
   },
   {
-    category: "Development",
+    category: "Programming & Scripting",
     tools: [
-      { name: "Visual Studio", proficiency: 85 },
-      { name: "Eclipse", proficiency: 80 },
-      { name: "IntelliJ", proficiency: 90 },
-      { name: "GitHub & Git", proficiency: 90 }
+      "Python", "Bash/Shell", "JavaScript", "HTML/CSS", "Node.js", "SQL"
     ]
   },
   {
-    category: "Data Management",
+    category: "Monitoring & Observability",
     tools: [
-      { name: "Tableau", proficiency: 80 },
-      { name: "Jupyter Notebook", proficiency: 85 }
+      "Prometheus", "Grafana", "Splunk", "Datadog", "ELK Stack"
+    ]
+  },
+  {
+    category: "Data & ML",
+    tools: [
+      "Pandas", "NumPy", "Scikit-learn", "Jupyter Notebook", "Apache Spark"
+    ]
+  },
+  {
+    category: "Version Control & Code",
+    tools: [
+      "Git", "GitHub", "GitLab", "Bitbucket"
+    ]
+  },
+  {
+    category: "Collaboration & Project Tools",
+    tools: [
+      "Jira", "Confluence", "Notion", "Slack", "Trello"
     ]
   }
-  // Commented out AI category
-  // {
-  //   category: "AI",
-  //   tools: [
-  //     { name: "Replit", proficiency: 85 },
-  //     { name: "Cursor", proficiency: 90 },
-  //     { name: "Vercel", proficiency: 85 },
-  //     { name: "Perplexity", proficiency: 80 },
-  //     { name: "Claude", proficiency: 85 }
-  //   ]
-  // }
+  
 ];
 
 export const technologies = [

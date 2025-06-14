@@ -10,10 +10,10 @@ import {
   ChevronDown
 } from "lucide-react";
 import vnitCampus from "@/assets/MSEC.jpeg";
-import citiImage from "@/assets/linkpic1.jpg";
-import tamuImage from "@/assets/linkpic1.jpg";
-import internshipImage from "@/assets/linkpic1.jpg";
-import fulltimeImage from "@/assets/linkpic1.jpg";
+import citiImage from "@/assets/sabre1.jpeg";
+import tamuImage from "@/assets/gwu.jpeg";
+import internshipImage from "@/assets/extern.png";
+import fulltimeImage from "@/assets/lseg.png";
 import { useState } from "react";
 
 export default function AboutSection() {
