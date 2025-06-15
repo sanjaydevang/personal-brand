@@ -9,6 +9,7 @@ import InterestsSection from './components/sections/InterestsSection';
 import ExtracurricularsSection from './components/sections/ExtracurricularsSection';
 import ContactSection from './components/sections/ContactSection';
 import { Toaster } from '@/components/ui/toaster';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       </main>
       <Footer />
       <Toaster />
+      <Analytics />
     </div>
   );
 }
